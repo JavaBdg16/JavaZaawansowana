@@ -25,7 +25,21 @@ public class Flight implements Comparable<Flight>, Iterable<Passenger> {
     }
 
     public Iterable<Passenger> getPremiumPassengers() {
-        return new PremiumPassengerIterable();
+        Iterable<Passenger> premiumPassengersIterarable = new Iterable<Passenger>() {
+            @Override
+            public Iterator<Passenger> iterator() {
+                List<Passenger> premiumPasserngers = new ArrayList<>();
+                for (Passenger passenger : passengerList) {
+                    if (passenger.getRewardProgram().getMemberLevel() == 3) {
+                        premiumPasserngers.add(passenger);
+                    }
+                }
+
+                return premiumPasserngers.iterator();
+            }
+        };
+
+        return premiumPassengersIterarable;
     }
 
     public void addPassenger(Passenger passenger) {
@@ -40,15 +54,6 @@ public class Flight implements Comparable<Flight>, Iterable<Passenger> {
             passengerList.toArray(passengers);
             Arrays.sort(passengers);
             return Arrays.asList(passengers).iterator();
-        }
-    }
-
-    private class PremiumPassengerIterable implements Iterable<Passenger> {
-
-        @Override
-        public Iterator<Passenger> iterator() {
-            // TODO
-            return null;
         }
     }
 }

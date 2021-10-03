@@ -27,5 +27,12 @@ public class Main {
         for (Passenger passenger : flight.getOrderedPassengers()) {
             System.out.println(passenger);
         }
+
+        System.out.println();
+        System.out.println();
+
+        for (Passenger passenger : flight.getPremiumPassengers()) {
+            System.out.println(passenger);
+        }
     }
 }
