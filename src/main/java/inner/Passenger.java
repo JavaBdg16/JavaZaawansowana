@@ -1,8 +1,21 @@
 package inner;
 
-public class Passenger {
+public class Passenger implements Comparable {
 
     private String name;
+
+    @Override
+    public int compareTo(Object o) {
+        Passenger p = (Passenger) o;
+        // <0 gdy this jest lepsze niż p
+        int returnValue = p.getRewardProgram().memberLevel - this.getRewardProgram().memberLevel;
+
+        if (returnValue == 0) {
+            returnValue = p.getRewardProgram().memberDays - this.getRewardProgram().memberDays;
+        }
+
+        return returnValue;
+    }
 
     public static class RewardProgram {
         private int memberLevel;
@@ -35,5 +48,12 @@ public class Passenger {
 
     public RewardProgram getRewardProgram() {
         return rewardProgram;
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
