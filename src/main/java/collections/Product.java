@@ -2,8 +2,15 @@ package collections;
 
 public class Product {
 
+    private int id;
     private final String name;
     private final int weight;
+
+    public Product(int id, String name, int weight) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+    }
 
     public Product(String name, int weight) {
         this.name = name;
@@ -18,10 +25,15 @@ public class Product {
         return weight;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", weight=" + weight +
                 '}';
     }
