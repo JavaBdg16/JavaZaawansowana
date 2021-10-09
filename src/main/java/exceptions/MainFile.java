@@ -30,7 +30,7 @@ public class MainFile {
             try {
                 System.out.println("Closing file - file_name");
                 reader.close();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println("Error closing file");
             }
 
