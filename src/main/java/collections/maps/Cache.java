@@ -1,9 +1,6 @@
 package collections.maps;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Cache {
 
@@ -36,15 +33,16 @@ public class Cache {
 
         System.out.println("From webAPI");
         // TODO: request to webAPI, get currency, save to cache, and return
-        cacheValue = new CacheValue(4.11d);
+        Random r = new Random();
+        double randomValue = 4.0d + (5.0d - 4.0d) * r.nextDouble();
+        cacheValue = new CacheValue(randomValue);
 
         cache.put(cacheKey, cacheValue);
 
         return cacheValue.getCurrency();
-
     }
 
-    public class CacheKey {
+    private class CacheKey {
 
         private String currencyIn;
         private String currencyOut;
@@ -54,18 +52,6 @@ public class Cache {
             this.currencyIn = currencyIn;
             this.currencyOut = currencyOut;
             this.date = date;
-        }
-
-        public String getCurrencyIn() {
-            return currencyIn;
-        }
-
-        public String getCurrencyOut() {
-            return currencyOut;
-        }
-
-        public String getDate() {
-            return date;
         }
 
         @Override
@@ -82,7 +68,7 @@ public class Cache {
         }
     }
 
-    public class CacheValue {
+    private class CacheValue {
         private double currency;
 
         public CacheValue(double currency) {
