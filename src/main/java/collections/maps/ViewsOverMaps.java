@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class ViewsOverMaps {
 
-    private static Product door = new Product(1, "Wooden Door", 35);
-    private static Product floorPanel = new Product(2, "Floor Panel", 25);
-    private static Product window = new Product(3, "Glass window", 10);
+    public static final Product door = new Product(1, "Wooden Door", 35);
+    public static final Product floorPanel = new Product(2, "Floor Panel", 25);
+    public static final Product window = new Product(3, "Glass window", 10);
 
     public static void main(String[] args) {
 
