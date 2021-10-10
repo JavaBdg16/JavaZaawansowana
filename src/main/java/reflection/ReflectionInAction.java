@@ -115,7 +115,7 @@ public class ReflectionInAction {
             Field field = Model.class.getDeclaredField("str");
             field.setAccessible(true);
 
-            // field.set(, "kot ma alę");
+            field.set(model, "kot ma alę");
 
             System.out.println(model);
             // Model mmm = new Model(1, "a");
