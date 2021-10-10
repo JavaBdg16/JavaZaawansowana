@@ -16,7 +16,7 @@ public class ProductCatalogueTest {
     public void shouldNotRecordDuplicateProducts() {
 
         Supplier oknoplast = new Supplier("Oknoplast");
-        oknoplast.getProducts().add(window);
+        oknoplast.getProducts().add(new Product("Glass Window", 10));
 
         Supplier drutex = new Supplier("Drutex");
         drutex.getProducts().add(door);
@@ -26,6 +26,10 @@ public class ProductCatalogueTest {
         ProductCatalogue productCatalogue = new ProductCatalogue();
         productCatalogue.addSupplier(oknoplast);
         productCatalogue.addSupplier(drutex);
+
+        for (Product product : productCatalogue.getProducts()) {
+            System.out.println(product);
+        }
 
         assertEquals(3, productCatalogue.getProducts().size());
     }
