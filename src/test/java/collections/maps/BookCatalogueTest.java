@@ -1,10 +1,15 @@
 package collections.maps;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookCatalogueTest {
+
+    private BookCatalogue bookCatalogue = new ListBookCatalogue();
 
     Book czystyKod = new Book(
             "9788328302341",
@@ -31,29 +36,29 @@ public class BookCatalogueTest {
             "978-0201633610",
             "Design patterns: elements of reusable object-oriented software",
             "Erich Gamma, Richard Helm, Ralph Johnson, John Vissides",
-            "1995-03-14"
+            "1994-10-21"
     );
 
-
-    @Test
-    public void shouldAddBookToCatalogue() {
-        BookCatalogue bookCatalogue = new BookCatalogue();
+    @BeforeEach
+    public void beforeEach() {
         bookCatalogue.add(czystyKod);
         bookCatalogue.add(pragmatycznyProgramista);
         bookCatalogue.add(tdd);
         bookCatalogue.add(designPatterns);
+    }
 
+    @AfterEach
+    public void afterEach() {
+        bookCatalogue.clear();
+    }
+
+    @Test
+    public void shouldAddBookToCatalogue() {
         assertEquals(4, bookCatalogue.countBooks());
     }
 
     @Test
     public void shouldLookupBookInCatalogue() {
-        BookCatalogue bookCatalogue = new BookCatalogue();
-        bookCatalogue.add(czystyKod);
-        bookCatalogue.add(pragmatycznyProgramista);
-        bookCatalogue.add(tdd);
-        bookCatalogue.add(designPatterns);
-
         assertEquals(czystyKod, bookCatalogue.getByIsbn(czystyKod.getIsbn()));
         assertEquals(pragmatycznyProgramista, bookCatalogue.getByIsbn(pragmatycznyProgramista.getIsbn()));
         assertEquals(tdd, bookCatalogue.getByIsbn(tdd.getIsbn()));
@@ -62,14 +67,8 @@ public class BookCatalogueTest {
 
     @Test
     public void shouldRemoveBookFromCatalogue() {
-        BookCatalogue bookCatalogue = new BookCatalogue();
-        bookCatalogue.add(czystyKod);
-        bookCatalogue.add(pragmatycznyProgramista);
-        bookCatalogue.add(tdd);
-        bookCatalogue.add(designPatterns);
-
         bookCatalogue.remove(czystyKod);
 
-        assertNull(bookCatalogue.get(czystyKod.getIsbn()));
+        assertNull(bookCatalogue.getByIsbn(czystyKod.getIsbn()));
     }
 }
