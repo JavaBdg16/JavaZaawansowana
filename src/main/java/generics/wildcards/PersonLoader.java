@@ -22,6 +22,7 @@ public class PersonLoader {
             String personName = file.readUTF();
             int age = file.readInt();
 
+            // java.util.List
             Class<?> personClass = Class.forName(className);
             Constructor<?> constructor = personClass.getConstructor(String.class, int.class);
             return (Person) constructor.newInstance(personName, age);
