@@ -39,7 +39,7 @@ public class Product {
                 '}';
     }
 
-    private static final List<Product> PRODUCTS = Arrays.asList(
+    public static final List<Product> PRODUCTS = Arrays.asList(
             new Product(FOOD, "Oranges", new BigDecimal("1.65")),
             new Product(FOOD, "Gouda cheese", new BigDecimal("6.79")),
             new Product(CLEANING, "Detergent", new BigDecimal("3.79")),
